@@ -1,0 +1,81 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{listings}
+\usepackage{scalefnt}
+\usepackage{cancel}
+\usepackage{picinpar}
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage[left=1.5cm,right=1.5cm,top=2.0cm,bottom=1.5cm]{geometry}
+\date{\today}
+\title{Métodos Computationais em Física 2020\\ Pêndulo Amortecido Forçado} %Coloque o título
+\author{João Henrique de Sant'Ana  NUSP 9783362} % Coloque o seu nome e NºUSP
+
+% – inicio codigo fonte para inserir o script de colocar o seu arquivo texto, não mecher aqui
+\usepackage{listings}
+
+\lstset{numbers=left,
+stepnumber=1,
+firstnumber=1,
+numberstyle=\tiny,
+extendedchars=true, %				Não mecha!
+breaklines=true,
+frame=tb,
+basicstyle=\footnotesize,
+stringstyle=\ttfamily,
+showstringspaces=false
+}
+\renewcommand{\lstlistingname}{Code}
+\renewcommand{\lstlistlistingname}{Lista de Listagens}
+% – fim codigo fonte
+
+\begin{document}  
+
+\maketitle
+\section*{Introdução}
+Nesse manual, tenho o intuito de instruir o usuário a usar os script's que resolvem o problema do pêndulo amortecido forçado. Primeiro de tudo você precisa ter python3 instalado em sua máquina e também ter os módulos \textit{numpy}, \textit{matplotlib} e \textit{scipy}. Se você estiver numa distribuição linux ou MacOS, você precisa apenas abrir o terminal e ir no diretório onde estão os aquivos $.py$ e dar o seguindo comando python3 $nome\_arquivo.py$. Se voce estiver num ambiente de programação é so abrir o aquivo $.py$ e rodar. Não tem erro. Os arquivos são
+\begin{itemize}
+	\item $espaco\_fase.py$
+	\item $mapa\_poincare.py$
+	\item $diagrama\_bifurcacao.py$
+	\item $expoente\_lyapunov.py$
+	\item $energia\_oscilador.py$
+\end{itemize}
+\section*{Equações}
+ \begin{equation}\label{eq:equação_pêndulo_numerica}
+        \begin{cases}
+        &\dot{\omega}= -\frac{1}{q}\dot{\theta} -sin(\theta) + Fsin(\Omega_{d}t)\\
+        &\dot{\theta}=\omega
+        \end{cases}
+    \end{equation}  
+Para resolver numericamente utilizamos o algoritmo de runge-kutta de 4 ordem. Em todos os aquivos utilizamos a seguinte notação:
+\begin{equation}\label{eq:notação}
+        \begin{cases}
+        & w = \Omega_{d}\\
+        & y = \theta\\
+        & z = \dot{\theta}
+        \end{cases}
+\end{equation}
+Em todos os programas utilizamos a mesma função rungekutta$(y0,z0,F,q,w)$, onde $y0=\theta(0)$, $z0=\dot{\theta(0)}$ que retorna a lista tempo, y e z, além de que as variáveis h e N, intervalo do tempo e número total de elementos na lista do tempo, são variáveis globais. Em toda análise da dinâmica usamos $0<F\leq1.5$, $q=2$ ou $q=4$ e $w=2/3$. Como o algoritmo de runge-kutta é relativamente simples, resolvi deixar a mesma função em todos os arquivos para você rodar diretamente, sem erro. Qualquer dúvida é so me enviar um e-mail\footnote{joao.henrique.santana@usp.br}. Bom proveito!
+\section*{Comentario}
+A energia do oscilador utilizamos a expressão 
+\begin{equation}
+E = ml^2\dot{\theta}^{2} + mgl(1-cos(\theta))
+\end{equation}
+Para o plot da energia do oscilador, divimos tudo por $ml^{2}$ e ajustamos $\frac{g}{l} = 1$, daí
+\begin{equation}
+ E' = \dot{\theta}^{2} + (1-cos(\theta))
+\end{equation}
+\section*{Código}
+Para você ler código e os comentários de uma forma mais confortável, resolvi colocar nesse manual. Para não torna repetitivo só comentei a rungekutta no primeiro código. 
+\lstinputlisting[language=python, label=sqlselect, caption={Espaço de Fase}]{espaco_fase.py}
+\lstinputlisting[language=python, label=sqlselect, caption={Mapa de Poincaré}]{mapa_poincare.py}
+\lstinputlisting[language=python, label=sqlselect, caption={Diagrama de Bifurcação}]{diagrama_bifurcacao.py}
+\lstinputlisting[language=python, label=sqlselect, caption={Exponte de Lyapunov}]{expoente_lyapunov.py}
+\lstinputlisting[language=python, label=sqlselect, caption={Energia do Oscilador}]{energia_oscilador.py}
+\end{document}
