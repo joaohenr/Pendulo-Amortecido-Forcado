@@ -33,7 +33,7 @@ def rungekutta(y0,z0,F,q,w):
             y[i+1] = y[i+1] + 2*math.pi
     return t,y,z
 
-for F in [0,0.1,0.2,0.5, 1.2,1.45,1.47, 1.5]: #looping forca
+for F in [0,0.1,0.2,0.5, 1.2,1.35,1.45,1.47]: #looping forca
     q, w, h, N = 10, 2/3, 0.01,100000
     t,y,z=rungekutta(-0.5,1,F,q,w)      #runge-kutta ara condicao inicial -0.5 e 1
     z=(np.array(z)**2)/2                #energia cinetica
@@ -55,7 +55,7 @@ for F in [0,0.1,0.2,0.5, 1.2,1.45,1.47, 1.5]: #looping forca
     plt.xlabel(r'$t$(s)',fontsize=18)
     plt.xticks(fontsize=14)
     plt.yticks(fontsize=14)
-    plt.ylabel(r"$E'$ (dimes\~{a}o apropriada)",fontsize=18)
+    plt.ylabel(r"$E'$ (dimens\~{a}o apropriada)",fontsize=18)
     plt.title("Energia do Oscilador",fontsize=20)
     plt.legend(fontsize=14)
     plt.savefig('energia_oscilador%.2f.pdf'%F,dpi=300)
