@@ -6,9 +6,11 @@ Estudo sobre um pêndulo com atrito viscoso e com uma força periódica.
 * [matplotlib](https://matplotlib.org/)
 * [scipy](https://www.scipy.org/)
 * [LaTeX 2e](https://www.latex-project.org/)
+
+A necessidade do LaTex é por causa da fonte dos gráficos.
 ## Arquivos
 
-* ```rungekutta.py``` : resolve a equação do pêndulo via método rungekutta e retornando os vetores tempo, posição e velocidade.
+* ```rungekutta.py``` : resolve a equação do pêndulo via método rungekutta 4 ordem e retornando os vetores tempo, posição e velocidade.
 * ```diagrama_bifurcacao.py``` : plota o diagrama de bifurcação. 
 * ```energia_oscilador.py``` : plota a energia do pêndulo para cada valor de força.
 * ```espaco_fase.py``` : plota o espaço de fase para cada valor de força.
@@ -16,5 +18,5 @@ Estudo sobre um pêndulo com atrito viscoso e com uma força periódica.
 * ```expoente_lyapunov.py``` : calcula o expoente de lyapunov.
 * ```relatorio.pdf```: relatório do estudo.
 
-Todos os arquivos, menos o ```expoente_lyapunov.py```, precisam do arquivo rungekutta.py.
+Todos os arquivos, menos o ```expoente_lyapunov.py```, precisam do arquivo ```rungekutta.py```. 
 
