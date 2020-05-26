@@ -43,12 +43,7 @@ def func(x, a, b, c):
 
 popt, pcov = curve_fit(func,t[0:T],theta[0:T])  #ajuste
 
-#plot
 plt.plot(t[0:T],func(t[0:T],*popt),'r--',label='ajuste: $a=%5.3f$, $|\lambda_{l}|=%5.3f$, $c=%5.3f$' % tuple(popt) )
-
-t=t.tolist()                #t vira uma lista
-theta=theta.tolist()        #theta vira uma lista
-
 plt.plot(t[0:T],theta[0:T],color='teal',label='F=1.2',linewidth=2) #segundo plot
 plt.grid(linestyle='dotted',color='black')
 plt.xlabel(r'$t(s)$',fontsize=18)
@@ -58,6 +53,6 @@ plt.ylabel(r'$\Delta\theta$',fontsize=18,rotation=0)
 plt.yscale('log')
 plt.title("Expoente de Lyapunov",fontsize=20)
 plt.legend(fontsize=14)
-plt.savefig('expoente.pdf',dpi=300)
+plt.savefig('img/expoente_lyapunov/expoente.pdf',dpi=300)
 plt.show()
 
